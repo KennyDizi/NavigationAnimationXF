@@ -21,7 +21,7 @@ namespace NavigationAnimationXF.iOS.SourceCode
 
             var root = NavigationController.TopViewController;
             if (!page.NeedOverrideSoftBackButton) return;
-            var title = NavigationPage.GetBackButtonTitle(Element);
+            var title = "<" + (string.IsNullOrEmpty(NavigationPage.GetBackButtonTitle(Element)) ? "Back" : NavigationPage.GetBackButtonTitle(Element));
 
             root.NavigationItem.SetLeftBarButtonItem(
                 new UIBarButtonItem(title, UIBarButtonItemStyle.Plain, (sender, args) =>
