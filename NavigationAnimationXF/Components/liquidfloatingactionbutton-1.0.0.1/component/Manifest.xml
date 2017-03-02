@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<component format="1" id="liquidfloatingactionbutton">
+  <name>Liquid Floating Action Button</name>
+  <publisher>Xamarin Inc</publisher>
+  <publisher-url>http://xamarin.com</publisher-url>
+  <version>1.0.0.1</version>
+  <summary>The LiquidFloatingActionButton is a floating action button in liquid state.</summary>
+  <samples>
+    <sample id="LiquidFloatingActionButtonSample">
+      <name>Storyboard Sample</name>
+      <summary>Storyboard Sample</summary>
+    </sample>
+    <sample id="LiquidFloatingActionButtonSample-Classic">
+      <name>Classic API Sample</name>
+      <summary>Classic API Sample</summary>
+    </sample>
+  </samples>
+</component>

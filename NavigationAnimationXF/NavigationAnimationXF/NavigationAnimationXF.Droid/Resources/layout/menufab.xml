@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<com.github.clans.fab.FloatingActionMenu
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/fabmenures"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"        
+        app:menu_labels_ellipsize="end"
+        app:menu_labels_singleLine="true"
+        app:menu_fab_label="Options"
+        app:menu_labels_style="@style/MenuLabelsStyle"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"        
+        app:menu_animationDelayPerItem="0"
+        app:menu_shadowColor="#444"
+        app:menu_colorNormal="#0A5286"
+        app:menu_colorPressed="#F2AB00"
+        app:menu_colorRipple="#FFD44A65"/>

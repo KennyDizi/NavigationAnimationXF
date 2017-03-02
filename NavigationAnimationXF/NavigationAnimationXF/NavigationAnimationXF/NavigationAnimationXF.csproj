@@ -39,6 +39,8 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SourceCode\Controls\XViewEventArgs.cs" />
+    <Compile Include="SourceCode\Controls\XWellcareMenuFAB.cs" />
     <Compile Include="SourceCode\Pages\BasePage\XFVNNavigationAnimationBasePageView.cs" />
     <Compile Include="SourceCode\Pages\BasePage\XFVNNavigationAnimationBasePageViewModel.cs" />
     <Compile Include="SourceCode\Pages\HandleHardware\HandleHardwarePageView.xaml.cs">

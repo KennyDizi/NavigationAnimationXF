@@ -4,15 +4,44 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:basePage="clr-namespace:NavigationAnimationXF.SourceCode.Pages.BasePage;assembly=NavigationAnimationXF"
+    xmlns:controls="clr-namespace:NavigationAnimationXF.SourceCode.Controls;assembly=NavigationAnimationXF"
     Title="XF Vietnam">
-    <StackLayout Spacing="20" VerticalOptions="Center">
-        <Button
-            Clicked="OnGotoHardwarePage"
-            Text="Go to Handle Hardware back button"
-            TextColor="Blue" />
-        <Button
-            Clicked="OnGotoSoftwarePage"
-            Text="Go to Handle Software back button"
-            TextColor="Blue" />
-    </StackLayout>
+    <AbsoluteLayout>
+        <StackLayout
+            AbsoluteLayout.LayoutBounds="0,0,1,1"
+            AbsoluteLayout.LayoutFlags="All"
+            Spacing="20"
+            VerticalOptions="Start">
+            <Button
+                Clicked="OnGotoHardwarePage"
+                Text="Go to Handle Hardware back button"
+                TextColor="Blue" />
+            <Button
+                Clicked="OnGotoSoftwarePage"
+                Text="Go to Handle Software back button"
+                TextColor="Blue" />
+        </StackLayout>
+
+        <controls:XWellcareMenuFAB
+            x:Name="MenuFab"
+            Margin="20"
+            AbsoluteLayout.LayoutBounds="1,1,AutoSize,AutoSize"
+            AbsoluteLayout.LayoutFlags="PositionProportional"
+            Detail="Vietnam">
+            <controls:XWellcareMenuFAB.Children>
+                <controls:XWellcareFAB
+                    ClickId="1"
+                    Detail="HoChiMinh"
+                    ImageName="ic_edit.png" />
+                <controls:XWellcareFAB
+                    ClickId="1"
+                    Detail="Hanoi"
+                    ImageName="ic_edit.png" />
+                <controls:XWellcareFAB
+                    ClickId="1"
+                    Detail="Hello World"
+                    ImageName="ic_edit.png" />
+            </controls:XWellcareMenuFAB.Children>
+        </controls:XWellcareMenuFAB>
+    </AbsoluteLayout>
 </basePage:XFVNNavigationAnimationBasePageView>
