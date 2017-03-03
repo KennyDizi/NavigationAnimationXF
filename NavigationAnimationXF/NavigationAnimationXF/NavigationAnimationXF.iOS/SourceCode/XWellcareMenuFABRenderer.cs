@@ -21,6 +21,10 @@ namespace NavigationAnimationXF.iOS.SourceCode
     {
         private LiquidFloatingActionButton _menuFab;
 
+        /// <summary>
+        /// render control
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnElementChanged(ElementChangedEventArgs<XWellcareMenuFAB> e)
         {
             base.OnElementChanged(e);
@@ -29,16 +33,12 @@ namespace NavigationAnimationXF.iOS.SourceCode
             if (Control == null)
             {
                 //init menu
-                var height = UIScreen.MainScreen.Bounds.Height;
-                var width = UIScreen.MainScreen.Bounds.Width;
-                var frame2 = new CGRect(x: width - 56 - 16, y: height - 56 - 16, width: 56, height: 56);
-                var cslayer = FrameToCaShapeLayer(frame2);
                 var frame = new CGRect(0, 0, 50, 50);
                 _menuFab = new LiquidFloatingActionButton(frame)
                 {
                     AnimateStyle = AnimateStyle.Up,
                     EnableShadow = true,
-                    Color = Color.Blue.ToUIColor(),
+                    Color = XInAppUtilities.Instance.GetColor((int) XColorKeys.MainColor).ToUIColor(),
                     Cells = Element.Children.Select(
                         btn =>
                             new LiquidFloatingCell(UIImage.FromBundle(btn.ImageName))
@@ -71,6 +71,11 @@ namespace NavigationAnimationXF.iOS.SourceCode
             }
         }
 
+        /// <summary>
+        /// handle click
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void MenuFabCellSelected(object sender, CellSelectedEventArgs e)
         {
             //get item click index
@@ -81,6 +86,11 @@ namespace NavigationAnimationXF.iOS.SourceCode
             _menuFab.Close();
         }
 
+        /// <summary>
+        /// refresh itemsource
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             base.OnElementPropertyChanged(sender, e);
@@ -94,37 +104,24 @@ namespace NavigationAnimationXF.iOS.SourceCode
                 _menuFab.Cells = cells;
             }
         }
-        
-        private static CAShapeLayer FrameToCaShapeLayer(CGRect frame)
+
+        /// <summary>
+        /// handle touch floating action button
+        /// </summary>
+        /// <param name="point"></param>
+        /// <param name="uievent"></param>
+        /// <returns></returns>
+        public override UIView HitTest(CGPoint point, UIEvent uievent)
         {
-            var plusLayer = new CAShapeLayer
+            if (_menuFab.Frame.Contains(point)) return _menuFab;
+
+            foreach (var cell in _menuFab.Cells)
             {
-                LineCap = new NSString("kCALineCapRound"),
-                StrokeColor = UIColor.White.CGColor,
-                LineWidth = 3.0f
-            };
-
-            var w = frame.Width;
-            var h = frame.Height;
-
-            var points = new Dictionary<CGPoint, CGPoint>
-            {
-                {new CGPoint(x: w * 0.25, y: h * 0.35), new CGPoint(x: w * 0.75, y: h * 0.35)},
-                {new CGPoint(x: w * 0.25, y: h * 0.5), new CGPoint(x: w * 0.75, y: h * 0.5)},
-                {new CGPoint(x: w * 0.25, y: h * 0.65), new CGPoint(x: w * 0.75, y: h * 0.65)}
-            };
-
-            var path = new UIBezierPath();
-
-            foreach (var point in points)
-            {
-                path.MoveTo(point.Key);
-                path.AddLineTo(point.Value);
+                if (cell.Frame.Contains(point))
+                    return cell;
             }
 
-            plusLayer.Path = path.CGPath;
-
-            return plusLayer;
+            return base.HitTest(point, uievent);
         }
     }
 }
